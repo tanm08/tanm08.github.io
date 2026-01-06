@@ -1,228 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanmay Nagare | Data Science Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* --- CSS VARIABLES --- */
-        :root {
-            --primary: #2563eb;       
-            --dark: #1e293b;          
-            --light: #f8fafc;         
-            --card-bg: #ffffff;
-            --text-gray: #64748b;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanmay Nagare | Portfolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        /* --- GLOBAL STYLES --- */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
-        
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        section { padding: 80px 0; }
+<style>
+:root{
+  --primary:#2563eb;
+  --dark:#1e293b;
+  --gray:#64748b;
+  --light:#f8fafc;
+  --card:#ffffff;
+}
 
-        /* --- NAVIGATION --- */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
-        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; }
-        .nav-links a { margin-left: 20px; font-weight: 500; color: var(--text-gray); }
-        .nav-links a:hover { color: var(--primary); }
-        .btn-resume {
-            background-color: var(--primary); color: white !important;
-            padding: 10px 20px; border-radius: 50px; font-weight: 600;
-        }
-        .btn-resume:hover { background-color: #1d4ed8; transform: translateY(-2px); }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:system-ui,-apple-system,sans-serif;
+  background:var(--light);
+  color:var(--dark);
+  line-height:1.6;
+}
 
-        /* --- HERO SECTION --- */
-        .hero { text-align: center; padding: 100px 0 60px 0; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.2; }
-        .hero .highlight { color: var(--primary); }
-        .typewriter { font-size: 1.5rem; color: var(--text-gray); min-height: 1.6em; }
-        .social-icons { margin-top: 30px; }
-        .social-icons a { font-size: 1.8rem; margin: 0 15px; color: var(--text-gray); }
-        .social-icons a:hover { color: var(--primary); transform: scale(1.1); }
+a{text-decoration:none;color:inherit;}
+.container{max-width:1100px;margin:auto;padding:0 20px;}
+section{padding:80px 0;}
 
-        /* --- PROJECTS SECTION --- */
-        .section-title { text-align: center; margin-bottom: 50px; }
-        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; }
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 0;
+}
+.logo{font-size:1.5rem;font-weight:700;}
+.nav-links a{margin-left:20px;color:var(--gray);}
+.btn{
+  background:var(--primary);
+  color:#fff !important;
+  padding:10px 22px;
+  border-radius:25px;
+  font-size:0.9rem;
+  font-weight:600;
+  display:inline-block;
+}
 
-        .card {
-            background: var(--card-bg); border-radius: 16px; padding: 30px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); border-color: var(--primary); }
-        .card h3 { font-size: 1.5rem; margin-bottom: 10px; }
-        .card-desc { color: var(--text-gray); margin-bottom: 20px; font-size: 0.95rem; }
-        
-        .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-        .tech-pill {
-            background: #e0f2fe; color: #0284c7; padding: 5px 12px; border-radius: 20px;
-            font-size: 0.75rem; font-weight: 600;
-        }
-        .card-links { font-weight: 600; color: var(--primary); }
+/* HERO */
+.hero{
+  text-align:center;
+  padding:90px 0 60px;
+}
+.hero h1{font-size:3rem;margin-bottom:15px;}
+.hero p{
+  max-width:750px;
+  margin:auto;
+  color:var(--gray);
+  font-size:1.05rem;
+}
+.social a{
+  font-size:1.6rem;
+  margin:0 12px;
+  color:var(--gray);
+}
 
-        /* --- ABOUT SECTION --- */
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-        .skill-bar { background: #e2e8f0; height: 8px; border-radius: 4px; margin-bottom: 20px; }
-        .skill-fill { background: var(--primary); height: 100%; border-radius: 4px; }
+/* SECTION TITLE */
+.section-title{text-align:center;margin-bottom:45px;}
+.section-title p{color:var(--gray);}
 
-        /* --- FOOTER --- */
-        footer { text-align: center; padding: 50px 0; border-top: 1px solid #e2e8f0; margin-top: 50px; }
-        
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .about-grid { grid-template-columns: 1fr; }
-            nav { flex-direction: column; gap: 15px; }
-        }
-    </style>
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+
+/* CARD */
+.card{
+  background:var(--card);
+  padding:28px;
+  border-radius:14px;
+  border:1px solid #e5e7eb;
+}
+.card h3{margin-bottom:12px;font-size:1.25rem;}
+.card p{color:var(--gray);font-size:0.95rem;}
+
+.tags span{
+  display:inline-block;
+  background:#e0f2fe;
+  color:#0369a1;
+  padding:4px 10px;
+  border-radius:14px;
+  font-size:0.75rem;
+  margin:5px 5px 0 0;
+}
+
+/* RESUME */
+.resume-frame{
+  width:100%;
+  height:900px;
+  border:1px solid #d1d5db;
+  border-radius:8px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:50px 0;
+  border-top:1px solid #e5e7eb;
+}
+
+@media(max-width:768px){
+  .hero h1{font-size:2.2rem;}
+  nav{flex-direction:column;gap:10px;}
+}
+</style>
 </head>
+
 <body>
+<div class="container">
 
-    <div class="container">
-        <nav>
-            <div class="logo">Tanmay<span style="color:var(--primary)">.Nagare</span></div>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-                <a href="Tanmay_Nagare_Resume.pdf" class="btn-resume" target="_blank">Download Resume <i class="fas fa-download"></i></a>
-            </div>
-        </nav>
+<!-- NAV -->
+<nav>
+  <div class="logo">Tanmay Nagare</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <!-- <a href="#resume">Resume</a> -->
+    <a href="#projects">Projects</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+    <a href="assets/Tanmay_Nagare_Resume.pdf" class="btn" target="_blank">
+      Download My Resume
+    </a>
+  </div>
+</nav>
 
-        <section class="hero">
-            <h1>Hi, I'm <span class="highlight">Tanmay Nagare</span>.</h1>
-            <div class="typewriter" id="typewriter"></div>
-            
-            <p style="margin-top: 20px; color: var(--text-gray); max-width: 600px; margin-left: auto; margin-right: auto;">
-                Data Science Student & AI Enthusiast specializing in <strong>Predictive Modeling</strong> and <strong>Machine Learning</strong>.
-                I turn complex data into 90%+ accurate insights.
-            </p>
+<!-- ABOUT / INTRO -->
+<section class="hero" id="about">
+  <h1>Hi, I’m Tanmay 👋</h1>
+  <p>
+    I am a Computer Science Engineering student from Pune, India, with a strong interest
+    in Python, problem-solving, and building practical software applications.
+    <br><br>
+    I have worked on academic and internship projects where I handled real datasets,
+    built machine learning models, and developed simple backend systems.
+    I prefer clean, readable code and understanding how things work internally.
+    <br><br>
+    Currently, I am focusing on strengthening my core programming skills,
+    building meaningful projects, and preparing for entry-level
+    Software Engineering and AI/ML roles.
+  </p>
 
-            <div class="social-icons">
-                <a href="https://github.com/tanm08" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/tanmay-nagare" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:tanmaynagare2204@gmail.com"><i class="fas fa-envelope"></i></a>
-            </div>
-        </section>
+  <div class="social" style="margin-top:30px;">
+    <a href="https://github.com/tanm08" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/tanmay-nagare" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:tanmaynagare2204@gmail.com"><i class="fas fa-envelope"></i></a>
+  </div>
+</section>
 
-        <section id="about">
-            <div class="about-grid">
-                <div class="about-text">
-                    <h2 style="font-size: 2rem; margin-bottom: 20px;">Who I Am</h2>
-                    <p>
-                        I am a Computer Science Engineering student (Pune, India) with advanced skills in <strong>C++ and Python</strong>. 
-                        I have interned at <strong>Cognifyz Technologies</strong> and <strong>Internpe</strong>, where I solved real-world problems using supervised learning.
-                    </p>
-                    <p>
-                        My focus is building models that don't just work in theory, but deliver results—like my car price predictor with an <strong>0.89 R² score</strong>.
-                    </p>
-                </div>
-                <div class="skills-container">
-                    <h4>Python & C++ (DSA)</h4>
-                    <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
-                    
-                    <h4>Machine Learning (Scikit-Learn/Pandas)</h4>
-                    <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
-                    
-                    <h4>Data Visualization (Matplotlib)</h4>
-                    <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
-                </div>
-            </div>
-        </section>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-title">
+    <h2>Skills</h2>
+    <p>Technologies and tools I work with</p>
+  </div>
 
-        <section id="projects">
-            <div class="section-title">
-                <h2>Featured Projects</h2>
-                <p>Selected works demonstrating analysis, modeling, and deployment.</p>
-            </div>
-
-            <div class="project-grid">
-                
-                <div class="card">
-                    <h3>🚗 Car Price Predictor</h3>
-                    <p class="card-desc">
-                        <strong>The Problem:</strong> Difficulty in estimating fair market values for used vehicles.<br><br>
-                        <strong>The Solution:</strong> Regression model trained on 3,000+ entries. Achieved <strong>R² score of 0.89</strong> and MAE of 1.5 lakhs.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-pill">Python</span>
-                        <span class="tech-pill">Pandas</span>
-                        <span class="tech-pill">Regression</span>
-                    </div>
-                    <a href="https://github.com/tanm08" class="card-links" target="_blank">View Code <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="card">
-                    <h3>⚕️ Breast Cancer Detection</h3>
-                    <p class="card-desc">
-                        <strong>The Problem:</strong> Early and accurate diagnosis is critical for patient survival.<br><br>
-                        <strong>The Solution:</strong> Classification system using SVM and Logistic Regression. Achieved <strong>96% accuracy</strong> on the Wisconsin dataset.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-pill">Scikit-Learn</span>
-                        <span class="tech-pill">SVM</span>
-                        <span class="tech-pill">Healthcare AI</span>
-                    </div>
-                    <a href="https://github.com/tanm08" class="card-links" target="_blank">View Code <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="card">
-                    <h3>🏏 IPL Score Predictor</h3>
-                    <p class="card-desc">
-                        <strong>The Problem:</strong> Predicting sports scores requires handling volatile time-series data.<br><br>
-                        <strong>The Solution:</strong> Engineered a model during my internship to forecast match scores with >90% accuracy.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-pill">Data Analysis</span>
-                        <span class="tech-pill">NumPy</span>
-                        <span class="tech-pill">Matplotlib</span>
-                    </div>
-                    <a href="https://github.com/tanm08" class="card-links" target="_blank">View Code <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-            </div>
-        </section>
-
-        <footer id="contact">
-            <h2>Let's work together.</h2>
-            <p style="margin: 10px 0 30px 0; color: var(--text-gray);">Currently open for Internships & Junior Data Science Roles.</p>
-            <a href="mailto:tanmaynagare2204@gmail.com" class="btn-resume">Email Me</a>
-            <p style="margin-top: 50px; font-size: 0.8rem;">&copy; 2025 Tanmay Nagare.</p>
-        </footer>
-
+  <div class="grid">
+    <div class="card">
+      <h3>Programming Languages</h3>
+      <div class="tags">
+        <span>Python</span>
+        <span>C++</span>
+      </div>
     </div>
 
-    <script>
-        const textElement = document.getElementById('typewriter');
-        const phrases = ["I analyze data.", "I build AI models.", "I solve problems."];
-        let phraseIndex = 0; let charIndex = 0; let isDeleting = false;
+    <div class="card">
+      <h3>Libraries</h3>
+      <div class="tags">
+        <span>NumPy</span>
+        <span>Pandas</span>
+        <span>Matplotlib</span>
+        <span>Scikit-learn</span>
+      </div>
+    </div>
 
-        function type() {
-            const currentPhrase = phrases[phraseIndex];
-            if (isDeleting) {
-                textElement.textContent = currentPhrase.substring(0, charIndex - 1); charIndex--;
-            } else {
-                textElement.textContent = currentPhrase.substring(0, charIndex + 1); charIndex++;
-            }
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                isDeleting = true; setTimeout(type, 2000);
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; setTimeout(type, 500);
-            } else {
-                setTimeout(type, isDeleting ? 50 : 100);
-            }
-        }
-        document.addEventListener('DOMContentLoaded', type);
-    </script>
+    <div class="card">
+      <h3>Tools & Platforms</h3>
+      <div class="tags">
+        <span>Streamlit</span>
+        <span>Git</span>
+        <span>GitHub</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Databases</h3>
+      <div class="tags">
+        <span>SQL</span>
+        <span>PostgreSQL</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME
+<section id="resume">
+  <div class="section-title">
+    <h2>Resume</h2>
+    <p>View my complete resume below</p>
+  </div>
+
+  <iframe class="resume-frame" src="assets/Tanmay_Nagare_Resume.pdf"></iframe>
+
+  <div style="text-align:center;margin-top:25px;">
+    <a href="assets/Tanmay_Nagare_Resume.pdf" download class="btn">
+      Download My Resume
+    </a>
+  </div>
+</section> -->
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-title">
+    <h2>Projects</h2>
+    <p>Some of the work I have built</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Car Price Prediction</h3>
+      <p>
+        Built a regression model to predict used car prices using real datasets.
+        Worked on data preprocessing, feature selection, and evaluation.
+      </p>
+      <div class="tags">
+        <span>Python</span><span>Pandas</span><span>Scikit-learn</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Breast Cancer Detection</h3>
+      <p>
+        Developed a classification system using medical datasets and
+        compared Logistic Regression and SVM models.
+      </p>
+      <div class="tags">
+        <span>Logistic Regression</span><span>SVM</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Employee Management System</h3>
+      <p>
+        Streamlit-based application to manage employee records with CRUD
+        operations and PostgreSQL integration.
+      </p>
+      <div class="tags">
+        <span>Streamlit</span><span>PostgreSQL</span><span>Python</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-title">
+    <h2>Blog</h2>
+    <p>My learning and technical notes</p>
+  </div>
+
+  <div class="card" style="max-width:700px;margin:auto;text-align:center;">
+    <p>
+      I will be sharing my learnings, project experiences,
+      and technical concepts here very soon.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<footer id="contact">
+  <h2>Contact</h2>
+  <p style="color:var(--gray);margin:10px 0;">
+    Open to internships and entry-level roles
+  </p>
+
+  <div style="margin:20px 0;">
+    <a href="https://www.linkedin.com/in/tanmay-nagare" target="_blank" class="btn">LinkedIn</a>
+    <a href="mailto:tanmaynagare2204@gmail.com" class="btn" style="margin-left:10px;">Email Me</a>
+  </div>
+
+  <p style="margin-top:30px;font-size:0.8rem;">© 2025 Tanmay Nagare</p>
+</footer>
+
+</div>
 </body>
 </html>

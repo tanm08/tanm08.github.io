@@ -10,14 +10,15 @@
 
 <style>
 :root {
-  --ink: #0d0d0d;
-  --paper: #f5f2ed;
-  --cream: #ede9e1;
-  --accent: #c8451a;
-  --accent2: #2d6a4f;
-  --muted: #7a7065;
-  --card-bg: #ffffff;
-  --border: #d6d0c4;
+  --ink: #eef1f8;
+  --paper: #070a11;
+  --cream: #0d1220;
+  --accent: #35e0d1;
+  --accent2: #8b6bf2;
+  --muted: #8590a8;
+  --card-bg: #101827;
+  --border: #212a3d;
+  --surface-black: #04060a;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -54,7 +55,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(245, 242, 237, 0.88);
+  background: rgba(10, 13, 19, 0.85);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
@@ -85,8 +86,8 @@ nav {
 .nav-links a:hover { color: var(--ink); }
 
 .btn-nav {
-  background: var(--ink) !important;
-  color: var(--paper) !important;
+  background: var(--accent) !important;
+  color: #ffffff !important;
   padding: 9px 20px;
   border-radius: 4px;
   font-size: 0.78rem !important;
@@ -96,7 +97,7 @@ nav {
 }
 
 .btn-nav:hover {
-  background: var(--accent) !important;
+  background: #24bfb2 !important;
   transform: translateY(-1px);
 }
 
@@ -118,7 +119,7 @@ nav {
   font-family: 'DM Serif Display', serif;
   font-size: 22vw;
   color: transparent;
-  -webkit-text-stroke: 1px var(--border);
+  -webkit-text-stroke: 1px #1c2438;
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
@@ -126,9 +127,202 @@ nav {
 }
 
 .hero-inner {
-  max-width: 760px;
+  max-width: 560px;
   position: relative;
   z-index: 2;
+}
+
+/* HERO layout — content + photo */
+.hero-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 6px;
+  animation: fadeUp 0.6s ease both;
+}
+
+.hero-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+  font-weight: 400;
+  margin-bottom: 10px;
+  animation: fadeUp 0.6s 0.05s ease both;
+}
+
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-top: 44px;
+  padding: 22px 26px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  width: fit-content;
+  animation: fadeUp 0.6s 0.45s ease both;
+}
+
+.hero-stat .num {
+  display: block;
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.hero-stat .label {
+  font-size: 0.74rem;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.hero-stats .divider {
+  width: 1px;
+  height: 34px;
+  background: var(--border);
+}
+
+/* SIGNATURE — glowing portrait */
+.hero-photo-wrap {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.55;
+  animation: glowPulse 6s ease-in-out infinite;
+}
+
+.glow-blob.cyan {
+  width: 260px; height: 260px;
+  background: var(--accent);
+  top: 8%;
+  left: 2%;
+}
+
+.glow-blob.violet {
+  width: 240px; height: 240px;
+  background: var(--accent2);
+  bottom: 6%;
+  right: 4%;
+  animation-delay: 1.5s;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.08); }
+}
+
+.hero-orbit {
+  position: absolute;
+  border: 1px dashed rgba(139,107,242,0.3);
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.photo-orbit-1 { width: 380px; height: 380px; animation: spinSlow 44s linear infinite; }
+.photo-orbit-2 { width: 340px; height: 340px; border-color: rgba(53,224,209,0.25); animation: spinSlow 30s linear infinite reverse; }
+
+.orbit-dot {
+  position: absolute;
+  width: 7px; height: 7px;
+  background: var(--accent2);
+  border-radius: 50%;
+  top: -3.5px;
+  left: 50%;
+  box-shadow: 0 0 10px var(--accent2);
+}
+
+.hero-photo {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 2;
+  background: var(--surface-black);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 30px 80px rgba(0,0,0,0.6);
+  animation: cardIn 0.8s 0.2s ease both;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.hero-photo-badge {
+  position: absolute;
+  bottom: 14px;
+  right: -6px;
+  z-index: 3;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 8px 16px 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--ink);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+  animation: cardIn 0.7s 0.7s ease both;
+}
+
+.hero-photo-badge .dot2 {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 1150px) {
+  .hero-grid { flex-direction: column-reverse; text-align: center; gap: 50px; }
+  .hero-photo-wrap { width: 300px; height: 300px; }
+  .hero-photo { width: 240px; height: 240px; }
+  .glow-blob.cyan { width: 180px; height: 180px; }
+  .glow-blob.violet { width: 170px; height: 170px; }
+  .photo-orbit-1 { width: 280px; height: 280px; }
+  .photo-orbit-2 { width: 250px; height: 250px; }
+  .hero-actions, .hero-socials { justify-content: center; }
+  .hero-stats { margin-left: auto; margin-right: auto; }
+}
+
+@media (max-width: 640px) {
+  .hero-stats { gap: 16px; padding: 18px; flex-wrap: wrap; justify-content: center; }
 }
 
 .hero-tag {
@@ -204,7 +398,7 @@ nav {
   gap: 8px;
 }
 
-.btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+.btn-primary:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
 
 .btn-outline {
   border: 1.5px solid var(--border);
@@ -343,7 +537,7 @@ section { padding: 100px 60px; }
   transition: transform 0.3s;
 }
 
-.skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+.skill-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.45), 0 0 24px rgba(53,224,209,0.10); }
 .skill-card:hover::before { transform: scaleX(1); }
 
 .skill-icon {
@@ -382,7 +576,7 @@ section { padding: 100px 60px; }
   transition: all 0.15s;
 }
 
-.tag:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.tag:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 
 /* EXPERIENCE / INTERNSHIP */
 .timeline { position: relative; }
@@ -440,7 +634,7 @@ section { padding: 100px 60px; }
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent2);
-  background: rgba(45,106,79,0.08);
+  background: rgba(139,107,242,0.14);
   padding: 3px 10px;
   border-radius: 4px;
 }
@@ -483,11 +677,11 @@ section { padding: 100px 60px; }
 }
 
 /* PROJECTS */
-#projects { background: var(--ink); color: var(--paper); }
+#projects { background: var(--surface-black); color: var(--ink); }
 
-#projects .section-label { color: #e87c5a; }
-#projects .section-label::before { background: #e87c5a; }
-#projects .section-sub { color: #888; }
+#projects .section-label { color: var(--accent2); }
+#projects .section-label::before { background: var(--accent2); }
+#projects .section-sub { color: #8891a6; }
 
 .projects-grid {
   display: grid;
@@ -496,13 +690,15 @@ section { padding: 100px 60px; }
 }
 
 .project-card {
-  background: #181818;
-  border: 1px solid #2a2a2a;
+  background: #0d1119;
+  border: 1px solid #1f2636;
   border-radius: 14px;
   padding: 32px;
   transition: transform 0.2s, border-color 0.2s;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card::after {
@@ -515,7 +711,7 @@ section { padding: 100px 60px; }
   transition: opacity 0.3s;
 }
 
-.project-card:hover { transform: translateY(-5px); border-color: #3a3a3a; }
+.project-card:hover { transform: translateY(-5px); border-color: #33405c; }
 .project-card:hover::after { opacity: 1; }
 
 .project-number {
@@ -531,15 +727,37 @@ section { padding: 100px 60px; }
   font-size: 1.5rem;
   margin-bottom: 12px;
   letter-spacing: -0.02em;
-  color: var(--paper);
+  color: var(--ink);
 }
 
 .project-card p {
   font-size: 0.9rem;
   color: #888;
   line-height: 1.7;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   font-weight: 300;
+}
+
+.project-highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 22px;
+}
+
+.project-highlights li {
+  display: flex;
+  gap: 8px;
+  font-size: 0.83rem;
+  color: #999;
+  line-height: 1.5;
+}
+
+.project-highlights li::before {
+  content: '▸';
+  color: var(--accent);
+  flex-shrink: 0;
 }
 
 .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
@@ -547,14 +765,14 @@ section { padding: 100px 60px; }
 .project-tag {
   font-family: 'DM Mono', monospace;
   font-size: 0.72rem;
-  color: #aaa;
-  background: #222;
-  border: 1px solid #333;
+  color: #9fb3d9;
+  background: #161d2c;
+  border: 1px solid #263049;
   padding: 4px 10px;
   border-radius: 4px;
 }
 
-.project-links { display: flex; gap: 12px; }
+.project-links { display: flex; gap: 12px; margin-top: auto; }
 
 .project-link {
   display: inline-flex;
@@ -563,8 +781,8 @@ section { padding: 100px 60px; }
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: var(--paper);
-  border: 1px solid #333;
+  color: var(--ink);
+  border: 1px solid #263049;
   padding: 8px 16px;
   border-radius: 6px;
   transition: all 0.2s;
@@ -573,15 +791,17 @@ section { padding: 100px 60px; }
 .project-link:hover {
   background: var(--accent);
   border-color: var(--accent);
+  color: #fff;
   transform: translateY(-1px);
 }
 
 .project-link.live {
   background: var(--accent);
   border-color: var(--accent);
+  color: #fff;
 }
 
-.project-link.live:hover { background: #a8341a; }
+.project-link.live:hover { background: #24bfb2; }
 
 /* RESUME */
 #resume { background: var(--cream); }
@@ -597,7 +817,7 @@ section { padding: 100px 60px; }
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 }
 
 .resume-preview iframe {
@@ -684,8 +904,8 @@ section { padding: 100px 60px; }
 
 /* CONTACT / FOOTER */
 footer {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--surface-black);
+  color: var(--ink);
   padding: 80px 60px;
   text-align: center;
 }
@@ -739,11 +959,11 @@ footer h2 em { color: var(--accent); font-style: italic; }
   color: white;
 }
 
-.btn-footer.primary:hover { background: #a8341a; transform: translateY(-2px); }
+.btn-footer.primary:hover { background: #24bfb2; transform: translateY(-2px); }
 
 .btn-footer.ghost {
-  border: 1px solid #333;
-  color: var(--paper);
+  border: 1px solid #263049;
+  color: var(--ink);
 }
 
 .btn-footer.ghost:hover { border-color: #666; transform: translateY(-2px); }
@@ -816,40 +1036,74 @@ footer h2 em { color: var(--accent); font-style: italic; }
 <!-- HERO -->
 <section class="hero" id="about">
   <div class="hero-bg-text">AI</div>
-  <div class="hero-inner">
-    <div class="hero-tag">
-      <span class="dot"></span>
-      Available for internships & entry-level roles
+  <div class="hero-grid">
+    <div class="hero-inner">
+      <div class="hero-tag">
+        <span class="dot"></span>
+        Available for internships & entry-level roles
+      </div>
+      <p class="hero-eyebrow">Hi, I am</p>
+      <div class="hero-name">Tanmay Nagare</div>
+      <h1>Building things<br>with <em>data</em> &<br>curiosity.</h1>
+      <p>
+        Computer Science Engineering graduate from Pune, India. I work with Python, machine learning,
+        and backend systems — turning raw data into meaningful solutions.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">
+          View My Work <i class="fas fa-arrow-right" style="font-size:0.8rem"></i>
+        </a>
+        <a href="assets/TANMAY_NAGARE_RESUME (2).pdf" download class="btn-outline">
+          Download Resume
+        </a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://github.com/tanm08" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/tanmay-nagare" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="mailto:tanmaynagare2204@gmail.com" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://tanm08.github.io/" target="_blank" title="Portfolio">
+          <i class="fas fa-globe"></i>
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="num">8.7</span>
+          <span class="label">CGPA / 10</span>
+        </div>
+        <div class="divider"></div>
+        <div class="hero-stat">
+          <span class="num">2</span>
+          <span class="label">Internships</span>
+        </div>
+        <div class="divider"></div>
+        <div class="hero-stat">
+          <span class="num">5+</span>
+          <span class="label">Projects</span>
+        </div>
+      </div>
     </div>
-    <h1>Building things<br>with <em>data</em> &<br>curiosity.</h1>
-    <p>
-      Final-year CS student from Pune, India. I work with Python, machine learning,
-      and backend systems — turning raw data into meaningful solutions.
-      CGPA 8.61 · 2 internships · passionate about AI engineering.
-    </p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn-primary">
-        View My Work <i class="fas fa-arrow-right" style="font-size:0.8rem"></i>
-      </a>
-      <a href="#contact" class="btn-outline">
-        Get In Touch
-      </a>
-    </div>
-    <div class="hero-socials">
-      <a href="https://github.com/tanm08" target="_blank" title="GitHub">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/tanmay-nagare" target="_blank" title="LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
-      <a href="mailto:tanmaynagare2204@gmail.com" title="Email">
-        <i class="fas fa-envelope"></i>
-      </a>
-      <a href="https://tanm08.github.io/" target="_blank" title="Portfolio">
-        <i class="fas fa-globe"></i>
-      </a>
+
+    <div class="hero-photo-wrap">
+      <div class="glow-blob cyan"></div>
+      <div class="glow-blob violet"></div>
+      <div class="hero-orbit photo-orbit-1"><div class="orbit-dot"></div></div>
+      <div class="hero-orbit photo-orbit-2"></div>
+      <div class="hero-photo">
+        <img src="assets/profile.png" alt="Tanmay Nagare">
+      </div>
+      <div class="hero-photo-badge">
+        <span class="dot2"></span> Open to work
+      </div>
     </div>
   </div>
+
   <div class="scroll-hint">
     <div class="scroll-line"></div>
     Scroll
@@ -882,6 +1136,7 @@ footer h2 em { color: var(--accent); font-style: italic; }
           <span class="tag">NumPy</span>
           <span class="tag">Pandas</span>
           <span class="tag">Scikit-learn</span>
+          <span class="tag">XGBoost</span>
           <span class="tag">Matplotlib</span>
           <span class="tag">Seaborn</span>
         </div>
@@ -892,6 +1147,7 @@ footer h2 em { color: var(--accent); font-style: italic; }
         <h3>Databases & Tools</h3>
         <div class="tags">
           <span class="tag">PostgreSQL</span>
+          <span class="tag">Flask</span>
           <span class="tag">Streamlit</span>
           <span class="tag">Git</span>
           <span class="tag">GitHub</span>
@@ -907,6 +1163,7 @@ footer h2 em { color: var(--accent); font-style: italic; }
           <span class="tag">DSA</span>
           <span class="tag">OOP</span>
           <span class="tag">Data Preprocessing</span>
+          <span class="tag">Model Deployment</span>
         </div>
       </div>
     </div>
@@ -958,13 +1215,64 @@ footer h2 em { color: var(--accent); font-style: italic; }
 <section id="projects">
   <div style="max-width:1100px;margin:auto;">
     <div class="section-label reveal">Projects</div>
-    <h2 class="section-title reveal" style="color:var(--paper);">Selected Work</h2>
+    <h2 class="section-title reveal" style="color:var(--ink);">Selected Work</h2>
     <p class="section-sub reveal">Things I've built during learning and internships.</p>
 
     <div class="projects-grid reveal">
 
       <div class="project-card">
         <div class="project-number">01 / FEATURED</div>
+        <h3>Stock Movement Predictor</h3>
+        <p>End-to-end modular ML pipeline predicting next-day stock direction for any yfinance-supported ticker (NSE + US), with a Flask dashboard to train, compare, and backtest models per stock.</p>
+        <ul class="project-highlights">
+          <li>Engineered 30+ technical indicators (RSI, MACD-style trend, Bollinger Bands, ATR, OBV, lag returns)</li>
+          <li>Trained & compared 7 classifiers + baseline, auto-selecting the best by ROC-AUC</li>
+          <li>Built a backtesting module: returns, Sharpe ratio, max drawdown vs buy-and-hold</li>
+          <li>Deployed live on Render with a multi-stock watchlist dashboard</li>
+        </ul>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Scikit-learn</span>
+          <span class="project-tag">XGBoost</span>
+          <span class="project-tag">Flask</span>
+          <span class="project-tag">yfinance</span>
+        </div>
+        <div class="project-links">
+          <a href="https://stock-movement-predictor.onrender.com/" target="_blank" class="project-link live">
+            <i class="fas fa-external-link-alt" style="font-size:0.7rem"></i> Live Demo
+          </a>
+          <a href="https://github.com/tanm08/Stock-Movement-Predictor-" target="_blank" class="project-link">
+            <i class="fab fa-github" style="font-size:0.8rem"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">02 / FEATURED</div>
+        <h3>Student Performance Indicator</h3>
+        <p>End-to-end ML pipeline predicting a student's exam performance from demographic and academic features, built with a modular, production-style architecture.</p>
+        <ul class="project-highlights">
+          <li>Custom DataIngestion → DataTransformation → ModelTrainer pipeline with reusable components</li>
+          <li>Compared multiple regression models, auto-selecting the best on R² score</li>
+          <li>Custom logging & exception handling modules for cleaner debugging</li>
+          <li>Flask web app for real-time predictions from user input</li>
+        </ul>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Pandas</span>
+          <span class="project-tag">Scikit-learn</span>
+          <span class="project-tag">CatBoost</span>
+          <span class="project-tag">Flask</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/tanm08/mlproject" target="_blank" class="project-link">
+            <i class="fab fa-github" style="font-size:0.8rem"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">03</div>
         <h3>Employee Management System</h3>
         <p>Streamlit-based app to manage employee records with full CRUD operations and PostgreSQL backend. Focused on usability and clean application logic.</p>
         <div class="project-tags">
@@ -985,7 +1293,7 @@ footer h2 em { color: var(--accent); font-style: italic; }
       </div>
 
       <div class="project-card">
-        <div class="project-number">02</div>
+        <div class="project-number">04</div>
         <h3>Car Price Prediction</h3>
         <p>Regression model to predict used car prices using mileage, fuel type, and brand features. Evaluated with R² score and MAE metrics.</p>
         <div class="project-tags">
@@ -1003,7 +1311,7 @@ footer h2 em { color: var(--accent); font-style: italic; }
       </div>
 
       <div class="project-card">
-        <div class="project-number">03</div>
+        <div class="project-number">05</div>
         <h3>Breast Cancer Detection</h3>
         <p>Classification model to identify cancer type using medical datasets. Compared Logistic Regression and SVM approaches for accuracy.</p>
         <div class="project-tags">
@@ -1032,11 +1340,11 @@ footer h2 em { color: var(--accent); font-style: italic; }
       </div>
       <div class="resume-info reveal">
         <h3>My complete background, at a glance.</h3>
-        <p>Final-year Computer Science student with hands-on experience in ML, data engineering, and full-stack Python applications. Two internships, multiple shipped projects.</p>
+        <p>Computer Science Engineering graduate with hands-on experience in ML, data engineering, and full-stack Python applications. Two internships, multiple shipped projects.</p>
 
         <div class="resume-stats">
           <div class="stat">
-            <div class="stat-num">8.61</div>
+            <div class="stat-num">8.7</div>
             <div class="stat-label">CGPA / 10</div>
           </div>
           <div class="stat">
@@ -1044,12 +1352,12 @@ footer h2 em { color: var(--accent); font-style: italic; }
             <div class="stat-label">Internships</div>
           </div>
           <div class="stat">
-            <div class="stat-num">3+</div>
+            <div class="stat-num">5+</div>
             <div class="stat-label">Projects</div>
           </div>
           <div class="stat">
             <div class="stat-num">2026</div>
-            <div class="stat-label">Graduating</div>
+            <div class="stat-label">Graduated</div>
           </div>
         </div>
 
